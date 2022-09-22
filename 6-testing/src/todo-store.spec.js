@@ -31,10 +31,14 @@ describe('TodoStore', function () {
     describe('#setDone()', function () {
 
         it('should sort todos by status', function () {
-            // Add 3 todos
-            // Set the second one to done
-            // Verify that the second one is last in the list
-            // Verify that the last one is done
+            store.addTodo('Todo task 123');
+            store.addTodo('My new Todo task abc');
+            store.addTodo('My new Todo task qwerty');
+            const todo1 = store.todos[1];
+            store.setDone(todo1.id);
+            expect(todo1.done).toBe(true);
+            expect(store.todos[0].done).toBe(false);
+            expect(store.todos[2].done).toBe(true);
         });
 
     });
